@@ -58,7 +58,8 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
             if variable not in SENSOR_TYPES:
                 _LOGGER.error('Sensor type: "%s" does not exist', variable)
             else:
-                dev.append(DHTSensor(data, variable, unit))
+                object_id = config.get('object_id', 'DHT sensor')
+                dev.append(DHTSensor(data, variable, unit, object_id))
     except KeyError:
         pass
 
@@ -69,8 +70,8 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
 class DHTSensor(Entity):
     """ Implements an DHT sensor. """
 
-    def __init__(self, dht_client, sensor_type, temp_unit):
-        self.client_name = 'DHT sensor'
+    def __init__(self, dht_client, sensor_type, temp_unit, name='DHT sensor'):
+        self.client_name = name
         self._name = SENSOR_TYPES[sensor_type][0]
         self.dht_client = dht_client
         self.temp_unit = temp_unit
