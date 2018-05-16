@@ -19,8 +19,8 @@ from homeassistant.helpers.entity import Entity
 from homeassistant.util import Throttle, slugify
 import homeassistant.helpers.config_validation as cv
 
-REQUIREMENTS = [
-    'https://github.com/mjg59/python-broadlink/archive/master.zip#broadlink']
+REQUIREMENTS = ['https://github.com/mjg59/python-broadlink'
+                '/archive/master.zip#broadlink']
 
 _LOGGER = logging.getLogger(__name__)
 
